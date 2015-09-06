@@ -30,7 +30,7 @@ describe Calculator do
     end
 	
    it "is dependent on the operation order" do
-      expect(calc.subtract 1, 2).not_to eq calc.add(2, 1)
+      expect(calc.subtract 1, 2).not_to eq calc.subtract(2, 1)
     end
 
     context "when subtracting zero from an integer" do
@@ -47,6 +47,32 @@ describe Calculator do
  
     it "accepts more than 2 arguments" do
       expect(calc.subtract 2, 4, 3).to eq -5
+    end
+  end
+  
+  describe "#multiply" do
+    it "returns an integer" do
+      expect(calc.multiply 1, 7).to be_an Integer
+    end
+	
+   it "is not dependent on the operation order" do
+      expect(calc.multiply 3, 2).to eq calc.multiply(2, 3)
+    end
+
+    context "when multiplying by one" do
+      it "returns the other integer" do
+        expect(calc.multiply 6, 1).to eq 6
+      end
+    end
+	
+	context "when multiplying by zero" do
+		it "returns zero" do
+			expect(calc.multiply 5,0).to eq 0
+		end
+	end
+ 
+    it "accepts more than 2 arguments" do
+      expect(calc.multiply 2, 5, 3).to eq 30
     end
   end
   
