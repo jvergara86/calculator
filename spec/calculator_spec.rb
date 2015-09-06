@@ -93,7 +93,7 @@ describe Calculator do
 	
 	context "when dividing by zero" do
 		it "raise an error" do
-			expect{calc.divide 8,0}.to raise_error
+			expect{calc.divide 8,0}.to raise_exception
 		end
 	end
  
