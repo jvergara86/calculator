@@ -75,5 +75,31 @@ describe Calculator do
       expect(calc.multiply 2, 5, 3).to eq 30
     end
   end
+
+  describe "#divide" do
+    it "returns an integer" do
+      expect(calc.divide 2, 3).to be_an Integer
+    end
+	
+   it "is dependent on the operation order" do
+      expect(calc.divide 5, 2).not_to eq calc.divide(2, 5)
+    end
+
+    context "when dividing by one" do
+      it "returns the first integer" do
+        expect(calc.divide 9, 1).to eq 9
+      end
+    end
+	
+	context "when dividing by zero" do
+		it "raise an error" do
+			expect{calc.divide 8,0}.to raise_error
+		end
+	end
+ 
+    it "accepts more than 2 arguments" do
+      expect(calc.divide 10, 2, 2.5).to eq 2
+    end
+  end
   
 end
